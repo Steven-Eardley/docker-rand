@@ -1,0 +1,10 @@
+version: '3'
+services:
+  app:
+    restart: always
+    build: ./app
+    command: uwsgi --http-socket 0.0.0.0:8080 --manage-script-name --mount /web=app:app
+    volumes:
+      - ./app:/app
+    expose:
+      - 8080
